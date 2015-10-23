@@ -26,14 +26,14 @@ import com.leonoss.wechat.apppay.dto.WeixinPaySignablePdu;
 public abstract class Util {
 	private static final String WX_DATE_FORMAT = "yyyyMMddHHmmss";
 	private static Logger logger = LoggerFactory.getLogger(Util.class);
-    public static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	public static boolean isEmpty(String str) {
 		return str == null || str.trim().length() == 0;
 	}
 
 	public static byte[] hexStringToBytes(String hexStr) {
-		if (hexStr == null || hexStr == "") {
+		if (hexStr == null || "".equals(hexStr)) {
 			return null;
 		}
 		int byteCount = hexStr.length() / 2;
@@ -244,15 +244,13 @@ public abstract class Util {
 			throw new IllegalStateException("Encoding exception unexpected.", e);
 		}
 	}
-	
-	
 
-    public static String generateString(int length) {
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < length; i++) {
-                    int index = ThreadLocalRandom.current().nextInt(allChar.length());
-                    sb.append(allChar.charAt(index));
-            }
-            return sb.toString();
-    }
+	public static String generateString(int length) {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < length; i++) {
+			int index = ThreadLocalRandom.current().nextInt(allChar.length());
+			sb.append(allChar.charAt(index));
+		}
+		return sb.toString();
+	}
 }

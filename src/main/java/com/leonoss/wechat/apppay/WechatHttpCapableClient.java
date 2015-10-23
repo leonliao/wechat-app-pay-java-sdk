@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -20,9 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.leonoss.wechat.apppay.cfg.HttpConf;
-import com.leonoss.wechat.apppay.dto.UnifiedOrderResponse;
-import com.leonoss.wechat.apppay.dto.WechatAppPayProtocolHandler;
-import com.leonoss.wechat.apppay.exception.WechatAppPayServiceException;
 
 public class WechatHttpCapableClient implements Closeable {
 	protected PoolingHttpClientConnectionManager connMgr = new PoolingHttpClientConnectionManager();
