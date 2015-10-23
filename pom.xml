@@ -4,10 +4,29 @@
 	<artifactId>wechat-app-pay-java-sdk</artifactId>
 	<packaging>jar</packaging>
 	<groupId>com.leonoss</groupId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.2-SNAPSHOT</version>
 	<name>Wechat Payment App Payment Java SDK</name>
 	<description>Providing Java SDK for mobile app development, which requires Wechat App payment capability.</description>
+        <scm>
+                 <connection>scm:git:https://github.com/leonliao/wechat-app-pay-java-sdk.git</connection>
+                 <developerConnection>scm:git:https://github.com/leonliao/wechat-app-pay-java-sdk.git</developerConnection>
+                 <url>https://github.com/leonliao/wechat-app-pay-java-sdk</url>
+           	<tag>HEAD</tag>
+	  </scm>
 
+        <build>
+                <plugins>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-release-plugin</artifactId>
+                                <configuration>
+                                        <username>leonliao</username>
+                                        <tagNameFormat>v@{project.version}</tagNameFormat>
+                                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                                </configuration>
+                        </plugin>
+                </plugins>
+        </build>
 	<dependencies>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
