@@ -3,9 +3,10 @@ package com.leonoss.wechat.apppay.client.dto;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import com.leonoss.wechat.apppay.util.Util;
+
 import org.junit.Test;
 
-import com.leonoss.wechat.apppay.util.Util;
 
 public class WechatAppPayRequestTest {
 	String secret = "63d8ddd6ff234233edefb2633c218f7c";
