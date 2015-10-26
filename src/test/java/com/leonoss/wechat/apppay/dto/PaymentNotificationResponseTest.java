@@ -21,7 +21,7 @@ public class PaymentNotificationResponseTest {
     response.setReturn_msg("return_msg");
 
     System.out.println(response.toString());
-    System.out.println(WechatAppPayProtocolHandler.marshalToXml(response));
+    System.out.println(WechatAppPayProtocolHandler.marshalToXml(response, null));
 
     try {
       response.setReturn_code(null);

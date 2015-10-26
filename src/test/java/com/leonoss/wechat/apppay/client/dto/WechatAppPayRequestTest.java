@@ -9,7 +9,7 @@ import org.junit.Test;
 
 
 public class WechatAppPayRequestTest {
-	String secret = "63d8ddd6ff234233edefb2633c218f7c";
+	String key = "63d8ddd6ff234233edefb2633c218f7c";
 
 	/**
 	 * 本测试用例将程序输出与https://pay.weixin.qq.com/wiki/tools/signverify/的输出相比较
@@ -40,15 +40,14 @@ sign=13D4F799B343103B09EFCCC8CD477CF5
 		appPayRequest.setTimestamp("timestamp");
 
 		// 设置商户Key
-		appPayRequest.setSecret(secret);
-		appPayRequest.setSign(Util.validateFieldsAndGenerateWxSignature(appPayRequest));
+		appPayRequest.setSign(Util.validateFieldsAndGenerateWxSignature(appPayRequest, key));
 		System.out.println(appPayRequest.toString());
 
 		assertEquals("13D4F799B343103B09EFCCC8CD477CF5", appPayRequest.getSign());
 
 		appPayRequest.setTimestamp("");
 		try {
-			Util.validateFieldsAndGenerateWxSignature(appPayRequest);
+			Util.validateFieldsAndGenerateWxSignature(appPayRequest,key);
 			fail("should throw exception");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

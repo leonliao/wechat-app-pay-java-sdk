@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 
 public class UnifiedOrderResponseTest {
-	String secret = "63d8ddd6ff234233edefb2633c218f7c";
+	String key = "63d8ddd6ff234233edefb2633c218f7c";
 
 	/**
 	 * 本测试用例将程序输出与https://pay.weixin.qq.com/wiki/tools/signverify/的输出相比较
@@ -69,16 +69,15 @@ public class UnifiedOrderResponseTest {
 		response.setTrade_type("APP");
 
 		// 设置商户Key
-		response.setSecret(secret);
-		response.setSign(Util.validateFieldsAndGenerateWxSignature(response));
+		response.setSign(Util.validateFieldsAndGenerateWxSignature(response, key));
 		System.out.println(response.toString());
 
 		assertEquals("F6272455684CE7D610C3A7594AE194E5", response.getSign());
-		System.out.println(WechatAppPayProtocolHandler.marshalToXml(response));
+		System.out.println(WechatAppPayProtocolHandler.marshalToXml(response, key));
 
 		response.setNonce_str("");
 		try {
-			Util.validateFieldsAndGenerateWxSignature(response);
+			Util.validateFieldsAndGenerateWxSignature(response, key);
 			fail("should throw exception");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -102,13 +101,13 @@ public class UnifiedOrderResponseTest {
 				+ "	<sign>F6272455684CE7D610C3A7594AE194E5</sign>" +
 
 				"</xml>";
-		UnifiedOrderResponse response = WechatAppPayProtocolHandler.unmarshalFromXml(
-				xml, UnifiedOrderResponse.class, secret);
+		UnifiedOrderResponse response = WechatAppPayProtocolHandler.unmarshalFromXmlAndValidateSignature(
+				xml, UnifiedOrderResponse.class, key);
 
 		ByteArrayInputStream bis = new ByteArrayInputStream(
 				xml.getBytes("UTF-8"));
-		response = WechatAppPayProtocolHandler.unmarshalFromXml(bis,
-				UnifiedOrderResponse.class, secret);
+		response = WechatAppPayProtocolHandler.unmarshalFromXmlAndValidateSignature(bis,
+				UnifiedOrderResponse.class, key);
 		System.out.println(response);
 		bis.close();
 

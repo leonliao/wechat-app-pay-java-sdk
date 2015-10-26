@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class WechatAppPayServiceTest {
-  String secret = "63d8ddd6ff234233edefb2633c218f7c";
+  String key = "63d8ddd6ff234233edefb2633c218f7c";
 
   @Before
   public void setUp() throws Exception {
@@ -53,12 +53,10 @@ public class WechatAppPayServiceTest {
     order.setTime_expireByDate(Util.fromWeixinDateFormat(time_expire));
     order.setTotal_fee(total_fee);
     System.out.println(order.toString());
-    // 设置商户Key
-    order.setSecret(secret);
-
+    
     AppPayConf appPayConf = new AppPayConf();
     appPayConf.appId = appid;
-    appPayConf.key = secret;
+    appPayConf.key = key;
     appPayConf.mchId = mch_id;
     HttpConf httpConf = new HttpConf();
     httpConf.timeOutInSeconds = 30;
