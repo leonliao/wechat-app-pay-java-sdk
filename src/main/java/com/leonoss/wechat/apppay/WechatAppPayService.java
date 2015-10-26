@@ -5,6 +5,8 @@ import java.io.Closeable;
 import com.leonoss.wechat.apppay.cfg.AppPayConf;
 import com.leonoss.wechat.apppay.cfg.HttpConf;
 import com.leonoss.wechat.apppay.client.dto.WechatAppPayRequest;
+import com.leonoss.wechat.apppay.dto.OrderQuery;
+import com.leonoss.wechat.apppay.dto.OrderQueryResponse;
 import com.leonoss.wechat.apppay.dto.PaymentNotification;
 import com.leonoss.wechat.apppay.dto.UnifiedOrder;
 import com.leonoss.wechat.apppay.dto.UnifiedOrderResponse;
@@ -24,7 +26,7 @@ public interface WechatAppPayService extends Closeable{
 	 */
 	public void init(AppPayConf conf, HttpConf httpConf);
 	/**
-	 * 调用统一下单接口
+	 * 调用统一下单接口，因为异常情况无签名返回，由应用负责在收到正确响应时去验证签名
 	 * @param order
 	 * @return
 	 * @throws WechatAppPayServiceException
@@ -37,6 +39,15 @@ public interface WechatAppPayService extends Closeable{
 	 * @throws MalformedPduException
 	 */
 	public PaymentNotification parsePaymentNotificationXml(String xml) throws MalformedPduException;
+	
+	/**
+	 * 订单查询，因为异常情况无签名返回，由应用负责在收到正确响应时去验证签名
+	 * @param orderQuery
+	 * @return
+	 * @throws WechatAppPayServiceException
+	 */
+	public OrderQueryResponse queryOrder(OrderQuery orderQuery) throws WechatAppPayServiceException;
+	
 	/**
 	 * 生成客户端支付请求，需要提供调用统一下单接口后收到的prepay_id
 	 * @param prepayId 调用统一下单接口后收到的prepay_id
