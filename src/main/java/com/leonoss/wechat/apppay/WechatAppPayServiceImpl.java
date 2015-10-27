@@ -88,6 +88,7 @@ public class WechatAppPayServiceImpl extends WechatHttpCapableClient implements 
     request.setPrepayid(prepayId);
     request.setTimestamp(Long.toString(System.currentTimeMillis() / 1000));
     request.setNoncestr(Util.generateString(32));
+    request.setSign(Util.validateFieldsAndGenerateWxSignature(request, config.key));
     return request;
   }
 

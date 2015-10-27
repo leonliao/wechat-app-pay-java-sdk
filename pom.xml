@@ -4,7 +4,7 @@
 	<artifactId>wechat-app-pay-java-sdk</artifactId>
 	<packaging>jar</packaging>
 	<groupId>com.leonoss</groupId>
-	<version>0.2-SNAPSHOT</version>
+	<version>0.3-SNAPSHOT</version>
 	<name>Wechat Payment App Payment Java SDK</name>
 	<description>Providing Java SDK for mobile app development, which requires Wechat App payment capability.</description>
         <scm>

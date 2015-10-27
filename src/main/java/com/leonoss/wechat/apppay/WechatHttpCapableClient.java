@@ -50,7 +50,7 @@ public class WechatHttpCapableClient implements Closeable {
 
 	protected String sendHttpPostAndReturnString(String url, String body)
 			throws IOException {
-		logger.trace("Sending Get to URL {}", url);
+		logger.trace("Sending POST to URL {}", url);
 
 		String responseText = null;
 		CloseableHttpResponse response = null;

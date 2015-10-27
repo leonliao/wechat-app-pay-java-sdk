@@ -26,7 +26,7 @@ sign=13D4F799B343103B09EFCCC8CD477CF5
 	 * 
 	 */
 	@Test
-	public void testUnifiedOrderResponse() {
+	public void testGeneratingWechatAppPayRequest() {
 		String nounce_str = "nounce";
 		String appid = "wx333386e333333c44";
 		String mch_id = "1611111110";
